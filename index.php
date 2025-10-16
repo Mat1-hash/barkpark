@@ -24,8 +24,7 @@ $result = $conn->query($sql);
 <body>
 
 <header>
-    <div class="site-name">Site name</div>
-    <a href="#">Help</a>
+    <div class="site-name">Bark Park</div>
 </header>
 
 <main>
@@ -36,15 +35,9 @@ $result = $conn->query($sql);
         <input type="submit" value="Search">
     </form>
 
-    <div class="map-box">
-        Map
     </div>
 
-    <div class="info-boxes">
-        <div class="info-box">Off Leash Area</div>
-        <div class="info-box">Water Stations</div>
-        <div class="info-box">Walking Trails</div>
-    </div>
+
 
     <table>
         <tr>
