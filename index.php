@@ -15,50 +15,66 @@ $result = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Bark Park - Dog Friendly Parks</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 40px; }
-        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
-        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
-        input[type="text"] { padding: 6px; width: 300px; }
-        input[type="submit"] { padding: 6px 12px; }
-    </style>
+   
 </head>
 <body>
 
-<h1>Bark Park - Dog Friendly Parks</h1>
+<header>
+    <div class="site-name">Site name</div>
+    <a href="#">Help</a>
+</header>
 
-<form method="GET" action="">
-    <input type="text" name="search" placeholder="Search by park or location" value="<?php echo htmlspecialchars($search); ?>">
-    <input type="submit" value="Search">
-</form>
+<main>
+    <h1>FIND PARKS</h1>
 
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Location</th>
-        <th>Leash</th>
-        <th>Type</th>
-    </tr>
-    <?php
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()){
-            echo "<tr>
-                    <td>".htmlspecialchars($row['name'])."</td>
-                    <td>".htmlspecialchars($row['location'])."</td>
-                    <td>".htmlspecialchars($row['leash'])."</td>
-                    <td>".htmlspecialchars($row['type'])."</td>
-                  </tr>";
+    <form method="GET" action="">
+        <input type="text" name="search" placeholder="Search by park or location" value="<?php echo htmlspecialchars($search); ?>">
+        <input type="submit" value="Search">
+    </form>
+
+    <div class="map-box">
+        Map
+    </div>
+
+    <div class="info-boxes">
+        <div class="info-box">Off Leash Area</div>
+        <div class="info-box">Water Stations</div>
+        <div class="info-box">Walking Trails</div>
+    </div>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Leash</th>
+            <th>Type</th>
+        </tr>
+        <?php
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()){
+                echo "<tr>
+                        <td>".htmlspecialchars($row['name'])."</td>
+                        <td>".htmlspecialchars($row['location'])."</td>
+                        <td>".htmlspecialchars($row['leash'])."</td>
+                        <td>".htmlspecialchars($row['type'])."</td>
+                      </tr>";
+            }
+        } else {
+            echo "<tr><td colspan='4'>No parks found</td></tr>";
         }
-    } else {
-        echo "<tr><td colspan='4'>No parks found</td></tr>";
-    }
-    $conn->close();
-    ?>
-</table>
+        $conn->close();
+        ?>
+    </table>
+</main>
+
+<footer>
+    <a href="#">Use Cases</a>
+    <a href="#">Resources</a>
+</footer>
 
 </body>
 </html>
